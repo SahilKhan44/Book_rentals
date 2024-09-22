@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extend Rental Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rental Extension Confirmation</h1>
+    <p>Your rental for the book "{{ rental.book.title }}" has been successfully extended.</p>
+    <p>New End Date: {{ rental.end_date }}</p>
+    <p>Additional Fee: ${{ fee }}</p>
+    <a href="{% url 'rental_dashboard' %}">Go back to your dashboard</a>
+</body>
+</html>

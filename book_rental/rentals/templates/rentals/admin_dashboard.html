@@ -1,0 +1,11 @@
+<!-- rentals/templates/rentals/admin_dashboard.html -->
+<h1>Admin Rental Dashboard</h1>
+{% for rental in rentals %}
+    <div>
+        <h2>{{ rental.book.title }}</h2>
+        <p>Rented by: {{ rental.user.username }}</p>
+        <p>Rented on: {{ rental.start_date }}</p>
+        <p>Fee: ${{ rental.calculate_fee }}</p>
+        <a href="{% url 'external_extend_rental' rental.id %}">Extend Rental</a>
+    </div>
+{% endfor %}

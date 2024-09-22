@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #555;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        /* li {
+            margin-right:12% ;
+            width: 50%;
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        } */
+        li {
+            margin: 10px auto; /* Center horizontally */
+            width: 50%;
+            background: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        p {
+            color: #666;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rental Dashboard</h1>
+    <h2>Your Rented Books</h2>
+    {% if rentals %}
+        <ul>
+            {% for rental in rentals %}
+                <li>
+                    <strong>Book:</strong> {{ rental.book.title }}<br>
+                    <strong>Rent Start Date:</strong> {{ rental.start_date }}<br>
+                    <p><strong>Fee:</strong> ${{ rental.calculate_fee }}</p>
+                    <a href="{% url 'extend_rental' rental.id %}">Extend Rental</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have not rented any books yet.</p>
+    {% endif %}
+</body>
+</html>
